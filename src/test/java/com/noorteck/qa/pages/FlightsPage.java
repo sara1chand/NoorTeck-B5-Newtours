@@ -24,7 +24,7 @@ public class FlightsPage extends CommonUI {
 	WebElement selectFromMonth;
 	
 	@FindBy(xpath = "//select[@name='fromDay']")
-	WebElement selectFromDay;
+	WebElement selectFromDate;
 	
 	@FindBy(xpath = "//select[@name='toPort']")
 	WebElement selectArrival;
@@ -50,6 +50,8 @@ public class FlightsPage extends CommonUI {
 	@FindBy(xpath = "//input[@name='findFlights']")
 	WebElement continueClick;
 	
+	@FindBy(xpath = "/html[1]/body[1]/div[2]/table[1]/tbody[1]/tr[1]/td[2]/table[1]/tbody[1]/tr[4]/td[1]/table[1]/tbody[1]/tr[1]/td[2]/table[1]/tbody[1]/tr[1]/td[1]/p[1]/font[1]/b[1]/font[1]")
+	WebElement messageDisplay;
 	
 	public FlightsPage() {
 		PageFactory.initElements(driver, this);
@@ -63,10 +65,33 @@ public class FlightsPage extends CommonUI {
 		click(oneWayRadio);
 	}
 	
-	public void selectPass() {
-		isSelected(selectPassanger);
+	public void selectPass(String methodName, String indexTextValue) {
+		selectFromDropdown(selectPassanger,methodName, indexTextValue);
 	}
 	
+	public void selectMonth(String methodName, String indexTextValue) {
+		selectFromDropdown(selectFromMonth,methodName,indexTextValue );
+	}
+	
+	public void selectDeparture(String methodName, String indexTextValue) {
+		selectFromDropdown(selectDepart,methodName,indexTextValue );
+	}
+	
+	public void selectDate(String methodName, String indexTextValue) {
+		selectFromDropdown(selectFromDate,methodName,indexTextValue );
+	}
+	
+	public void selectArrive(String methodName, String indexTextValue) {
+		selectFromDropdown(selectArrival, methodName, indexTextValue);
+	}
+	
+	public void selectMonthTo(String methodName, String indexTextValue) {
+		selectFromDropdown(selectToMonth, methodName, indexTextValue);
+	}
+	
+	public void selectDateTo(String methodName, String indexTextValue) {
+		selectFromDropdown(selectToDay, methodName, indexTextValue);
+	}
 	public void radioEconomyClass() {
 		click(economyClass);
 	}
@@ -86,6 +111,10 @@ public class FlightsPage extends CommonUI {
 	
 	public void clickContinue() {
 		click(continueClick);
+	}
+	
+	public boolean displayMessage() {
+		return isDisplayed(messageDisplay);
 	}
 	
 	

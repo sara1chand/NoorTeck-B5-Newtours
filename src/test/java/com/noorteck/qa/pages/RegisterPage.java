@@ -84,9 +84,8 @@ public class RegisterPage extends CommonUI {
 		enter(postalCodeField, postalcode);
 	}
 
-	// not sure
+	
 	public void selectCountry(String methodName, String indexTextValue) {
-	  click(countrySelect);
 	 selectFromDropdown(countrySelect, methodName, indexTextValue);
     }
 

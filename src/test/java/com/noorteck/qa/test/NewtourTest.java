@@ -9,36 +9,31 @@ public class NewtourTest extends ObjInitialize {
 
 			String url = "http://demo.guru99.com/test/newtours/";
 
-			CommonUI commonUIObj = new CommonUI();
-			ObjInitialize obj = new ObjInitialize();
-			NewtourTest testObj = new NewtourTest();
+			CommonUI.openBrowser("chrome");
+			CommonUI.navigate(url);
+
+			initializeClassObj();
 			
+			   TestCaseTwo();
+			   TestCaseOne();
+			   TestCaseThree();
 
-			commonUIObj.openBrowser("chrome");
-			commonUIObj.navigate(url);
-
-			obj.initializeClassObj();
-			testObj.TestCaseOne();
-			testObj.TestCaseTwo();
-			testObj.TestCaseThree();
-
-			commonUIObj.quitBrowser();
+			CommonUI.quitBrowser();
 		}
 
-		public void TestCaseOne() {
-            homeObj.clickSignOn();
-            signonObj.dismissAlert();
-			signonObj.enterUserName("JohnCena@gmail.com");
-			signonObj.enterPasswordField("password123");
+		public static void TestCaseOne() {
+             homeObj.clickSignOn();
+            //signonObj.closeAlert();
+            signonObj.enterUserName("hopeitworks");
+			signonObj.enterPasswordField("last1223");
 			signonObj.clickSubmit();
+			//signonObj.displayMessage();
+			//signonObj.thankyouMessage();
 			
 			}
 
-		public void TestCaseTwo() {
+		public static void TestCaseTwo() {
 			
-			String url = "http://demo.guru99.com/test/newtours/";
-			
-			driver.get(url);
 			homeObj.clickRegiSter();
 			registerObj.enterFirstName("John");
 			registerObj.enterLastName("Cena");
@@ -47,16 +42,15 @@ public class NewtourTest extends ObjInitialize {
 			registerObj.enterAddress("7453 CenaLane");
 			registerObj.enterCity("Alexandria");
 			registerObj.enterState("VA");
-			registerObj.selectCountry(url, url);
-			//registerObj.selectFromDropDown("USA", methodName, "Value");
-			registerObj.enterpostalCode("335566");
-			registerObj.enteruserName("JohnCena@gmail.com");
-			registerObj.enterPassword("password123");
+			registerObj.selectCountry("value","UNITED STATES");
+		    registerObj.enterpostalCode("335566");
+			registerObj.enteruserName("hopeitworks");
+			registerObj.enterPassword("last1223");
 			registerObj.submitClick();
 			
 		}
 		
-		public void TestCaseThree() {
+		public static void TestCaseThree() {
 			
 			String url = "https://demo.guru99.com/test/newtours";
 			
@@ -64,11 +58,17 @@ public class NewtourTest extends ObjInitialize {
 			
 			homeObj.clickFlight();
 			flightsObj.clickOneway();
-			flightsObj.selectPass();//still figuring out how to deal with dropdowns in POM!!
+			flightsObj.selectPass("value","3");
 			flightsObj.radioFirstClass();
+		    flightsObj.selectDeparture("value","New York");
+			flightsObj.selectMonth("value","1");
+			flightsObj.selectDate("index","4");
+			flightsObj.selectArrive("value","London");
+			flightsObj.selectMonthTo("value","1");
+			flightsObj.selectDateTo("value","31");
+			flightsObj.clickAirline("text","Unified Airlines");
 			flightsObj.clickContinue();
-			
-			
+			flightsObj.displayMessage();
 			}
 		}
 		

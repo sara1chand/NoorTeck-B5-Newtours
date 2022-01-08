@@ -17,7 +17,10 @@ public class SignOnPage extends CommonUI {
 	@FindBy(xpath = "//input[@name='submit']")
 	WebElement submitButton;
 	
-	@FindBy(xpath = "//h3[text()='Login Successfully']")
+	@FindBy(id="dismiss-button")
+	WebElement alertClose;
+	
+	@FindBy(xpath = "//h3[contains(text(),'Login Successfully']")
 	WebElement loginMessage;
 	
 	@FindBy(xpath = "//b[contains(text(),'Thank you for Loggin')]")
@@ -46,6 +49,10 @@ public class SignOnPage extends CommonUI {
 	//not sure
 	public void thankyouMessage() {
 		isDisplayed(ThankYouMessage);
+	}
+	
+	public void closeAlert() {
+		click(alertClose);
 	}
 	
 	
